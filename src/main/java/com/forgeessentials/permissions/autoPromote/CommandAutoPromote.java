@@ -62,7 +62,7 @@ public class CommandAutoPromote extends ForgeEssentialsCommandBase {
 		if (ap == null)
 		{
 			AutoPromoteManager.instance().promoteMap.put(zone.getId(), new AutoPromote(zone.getId(), false));
-			ap = AutoPromoteManager.instance().promoteMap.get(zone.toString());
+			ap = AutoPromoteManager.instance().promoteMap.get(zone.getId());
 		}
 
 		/*
