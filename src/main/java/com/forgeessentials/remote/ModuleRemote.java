@@ -26,6 +26,7 @@ import com.forgeessentials.remote.command.CommandRemote;
 import com.forgeessentials.remote.handler.PushChatHandler;
 import com.forgeessentials.remote.handler.QueryPlayerHandler;
 import com.forgeessentials.remote.handler.QueryRemoteCapabilitiesHandler;
+import com.forgeessentials.remote.handler.QueryServerHealth;
 import com.forgeessentials.util.OutputHandler;
 import com.forgeessentials.util.UserIdent;
 import com.forgeessentials.util.events.FEModuleEvent.FEModuleInitEvent;
@@ -103,6 +104,7 @@ public class ModuleRemote extends ConfigLoaderBase implements RemoteManager {
         new QueryPlayerHandler().register();
         new PushChatHandler().register();
         new QueryRemoteCapabilitiesHandler().register();
+        new QueryServerHealth().register();
     }
 
     /**
