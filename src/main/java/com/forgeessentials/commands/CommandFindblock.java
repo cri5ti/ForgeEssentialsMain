@@ -52,9 +52,9 @@ public class CommandFindblock extends FEcmdModuleCommands {
         }
         String id = args[0];
         int meta = parseInt(sender, args[1]);
-        int range = (args.length < 2) ? defaultRange : parseIntWithMin(sender, args[2], 1);
-        int amount = (args.length < 3) ? defaultCount : parseIntWithMin(sender, args[3], 1);
-        int speed = (args.length < 4) ? defaultSpeed : parseIntWithMin(sender, args[4], 1);
+        int range = (args.length <= 2) ? defaultRange : parseIntWithMin(sender, args[2], 1);
+        int amount = (args.length <= 3) ? defaultCount : parseIntWithMin(sender, args[3], 1);
+        int speed = (args.length <= 4) ? defaultSpeed : parseIntWithMin(sender, args[4], 1);
 
         new TickTaskBlockFinder(sender, id, meta, range, amount, speed);
     }
@@ -106,6 +106,6 @@ public class CommandFindblock extends FEcmdModuleCommands {
     public String getCommandUsage(ICommandSender sender)
     {
 
-        return "/fb <block> [max distance] [amount of blocks] [speed] Finds a block.";
+        return "/fb <block> <meta> [max distance] [amount of blocks] [speed] Finds a block.";
     }
 }
