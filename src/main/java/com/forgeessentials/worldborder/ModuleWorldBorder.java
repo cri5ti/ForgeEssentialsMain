@@ -18,6 +18,7 @@ import com.forgeessentials.data.v2.DataManager;
 import com.forgeessentials.util.FunctionHelper;
 import com.forgeessentials.util.OutputHandler;
 import com.forgeessentials.util.events.FEModuleEvent.FEModuleInitEvent;
+import com.forgeessentials.util.events.FEModuleEvent.FEModuleServerPreInitEvent;
 import com.forgeessentials.util.events.FEModuleEvent.FEModuleServerInitEvent;
 import com.forgeessentials.util.events.FEModuleEvent.FEModuleServerPostInitEvent;
 import com.forgeessentials.util.events.FEModuleEvent.FEModuleServerStopEvent;
@@ -119,6 +120,11 @@ public class ModuleWorldBorder {
         ForgeEssentials.getConfigManager().registerLoader("WorldBorder", new ConfigWorldBorder());
 	}
 
+    @SubscribeEvent
+    public void serverAboutToStart(FEModuleServerPreInitEvent e) {
+        loadAll();
+    }
+
 	@SubscribeEvent
 	public void serverStarting(FEModuleServerInitEvent e)
 	{
@@ -136,8 +142,6 @@ public class ModuleWorldBorder {
 	@SubscribeEvent
 	public void serverStarted(FEModuleServerPostInitEvent e)
 	{
-		loadAll();
-
 		Zone zone = APIRegistry.perms.getServerZone();
 		if (!borderMap.containsKey(zone.getName()))
 		{
